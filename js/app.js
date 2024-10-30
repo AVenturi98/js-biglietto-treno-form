@@ -17,6 +17,8 @@ Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagi
 
 */
 
+
+
 // DICHIARAZIONE VARIABILI
 
 // form
@@ -104,7 +106,7 @@ formUtente.addEventListener('submit', function (event) {
             costoCompleto = u - scontoQuar
         } else costoCompleto = u
         
-        return Math.round(costoCompleto) + '€'
+        return costoCompleto.toFixed(2) + '€'
     }
     
     const costoCOMP = costoScontato(discount ,calcoloCosto);
@@ -112,7 +114,7 @@ formUtente.addEventListener('submit', function (event) {
 
     // costo km
     const ticketInfoCosto = document.createElement('div');
-    const costoSub = document.createTextNode('Costo base: ' + parseInt(calcoloCosto) + '€');
+    const costoSub = document.createTextNode('Costo base: ' + calcoloCosto.toFixed(2) + '€');
     
     costoKm.appendChild(ticketInfoCosto);
     ticketInfoCosto.appendChild(costoSub);
@@ -147,6 +149,8 @@ formUtente.addEventListener('submit', function (event) {
     
     
     btnRefresh.addEventListener('click', function () {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         location.reload()
         btnRefresh.classList.add('d-none');
     })
